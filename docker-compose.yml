@@ -1,0 +1,82 @@
+version: '3.9'
+services:
+
+  #PHP App
+  app:
+    build:
+      context: .
+      dockerfile: config/dockerfile
+    image: christexe/php:7.4-fpm-alpine
+    container_name: php_app
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www/html
+    volumes:
+      - ./code/:/var/www/html
+      - ./config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    networks:
+      - labnet
+
+  #Nginx Service
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+    volumes:
+      - ./code/:/var/www/html
+      - ./config/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - labnet
+    depends_on:
+      - app
+
+  #Mysql Service
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    restart: unless-stopped
+    tty: true
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: app
+      MYSQL_USER: app
+      MYSQL_PASSWORD: app
+    ports:
+      - "3306:3306"
+    networks:
+      - labnet
+
+  #PhpMyAdmin Service
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: unless-stopped
+    tty: true
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: app
+      PMA_PASSWORD: app
+      PMA_DATABASE: app
+    ports:
+      - "8080:80"
+    networks:
+      - labnet
+    depends_on:
+      - mysql
+
+#Docker Networks
+networks:
+  labnet: 
+    external:
+      name: labnet
+
+
+
+
