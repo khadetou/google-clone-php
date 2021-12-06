@@ -36,3 +36,119 @@ body {
   height: 100%;
   background-color: rgba(32, 33, 36, 1);
 }
+
+.form {
+  width: 100vw;
+  padding: 20px;
+}
+
+.searchbox-container {
+  margin: 0 auto;
+  width: 640px;
+  padding-top: 6px;
+  width: auto;
+  max-width: 584px;
+  position: relative;
+}
+
+.searchContainer {
+  display: flex;
+  z-index: 3;
+  height: 44px;
+  background: #202124;
+  border: 1px solid #5f6368;
+  box-shadow: none;
+  border-radius: 24px;
+  margin: 0 auto;
+  width: 638px;
+  width: auto;
+  max-width: 584px;
+}
+
+.search-icon {
+  display: flex;
+  align-items: center;
+  padding-right: 13px;
+  margin-top: -5px;
+}
+
+.searh-icon-container {
+  margin: auto;
+}
+
+.span {
+  margin-top: 3px;
+  color: #9aa0a6;
+  height: 20px;
+  width: 20px;
+}
+
+.span1 {
+  display: inline-block;
+  fill: currentColor;
+  height: 24px;
+  line-height: 24px;
+  position: relative;
+  width: 24px;
+}
+
+.subcontainer {
+  flex: 1;
+  display: flex;
+  padding: 5px 8px 0 14px;
+}
+
+.input-container {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+}
+.top-input {
+  color: transparent;
+  flex: 100%;
+  white-space: pre;
+  height: 34px;
+}
+
+.input {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  color: #e8eaed;
+  word-wrap: break-word;
+  outline: none;
+  display: flex;
+  flex: 100%;
+  -webkit-tap-highlight-color: transparent;
+  margin-top: -37px;
+  height: 34px;
+  font-size: 16px;
+}
+
+.mic-container {
+  display: flex;
+  flex: 0 0 auto;
+  margin-top: -5px;
+  align-items: stretch;
+  flex-direction: row;
+}
+
+.mic-subcontainer {
+  flex: 1 0 auto;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  border: 0;
+  background: transparent;
+  outline: none;
+  padding: 0 8px;
+  width: 24px;
+  line-height: 44px;
+}
+
+.svg {
+  height: 24px;
+  width: 24px;
+  vertical-align: middle;
+}
